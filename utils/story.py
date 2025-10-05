@@ -39,4 +39,3 @@ def GetPosts(url, story_count=1) -> list:
     return results
     
 
-
