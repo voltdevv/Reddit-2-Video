@@ -28,8 +28,7 @@ def GetPosts(url, story_count=1) -> list:
 
     results = []
 
-    for story in tqdm(range(story_count), desc="Fetching Posts", ncols=80): # max per request 
-    
+    for story in tqdm(range(story_count), desc="Fetching Posts", ncols=80): 
         post = data['data']['children'][story]['data']
         title = post['title']
         text = post['selftext']

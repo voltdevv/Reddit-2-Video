@@ -2,3 +2,4 @@ requests
 fake_useragent
 ollama
 pyttsx3
+tqdm
