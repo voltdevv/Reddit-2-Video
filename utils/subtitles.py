@@ -13,6 +13,11 @@ class Segment:
         return f"""
 Start - {self.start}s | End - {self.end}s | Text - {self.text}
 """
+    
+    def __repr__(self):
+        return f"""
+Start - {self.start}s | End - {self.end}s | Text - {self.text}
+"""
 
 def segment(path):
     model = WhisperModel(model_size, device='cpu', compute_type="int8")
