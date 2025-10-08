@@ -3,3 +3,4 @@ fake_useragent
 ollama
 pyttsx3
 tqdm
+faster-whisper
