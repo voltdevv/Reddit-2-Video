@@ -11,7 +11,7 @@ of the github
 """
 
 
-def subtitle(path):
+def segment(path):
     model = WhisperModel(model_size, device='cpu', compute_type="int8")
 
     segments, info = model.transcribe(path, beam_size=5)
