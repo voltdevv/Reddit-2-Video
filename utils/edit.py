@@ -1,13 +1,26 @@
 from moviepy import VideoFileClip, TextClip, CompositeVideoClip
+from subtitles import segment
 
 
-class Editor():
+clip = VideoFileClip('test.mp4')
 
-    def __init__(self, video, audio):
 
-        self.video = video
-        self.audio = audio
-        self.subtitle_clips = []
+segments = segment('output/test.wav')
 
-    def subtitles(self):
-        
+
+subtitle_clips = []
+
+for seg in segments:
+    txt_clip = TextClip(
+    seg.text,
+    fontsize=80,
+    color="white",
+    font="Arial-Bold"
+    ).set_start(seg.start).set_end(seg.end)
+    subtitle_clips.append(txt_clip)
+
+
+final_clip = CompositeVideoClip([clip, *subtitle_clips])
+
+
+final_clip.write_videofile("video_with_subs.mp4")
