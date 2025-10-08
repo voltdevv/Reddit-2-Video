@@ -4,7 +4,7 @@ from tqdm import tqdm
 
 class Voice:
     
-    def __init__(self, rate=150, output_path="output", file_name="test.wav"):
+    def __init__(self, rate=150, output_path="output", file_name="test"):
         self.rate = rate
         self.output_path = output_path
         self.file_name = file_name if file_name.endswith(".wav") else file_name + ".wav"
@@ -25,11 +25,10 @@ class Voice:
             lambda: engine.setProperty("rate", self.rate),
             lambda: engine.save_to_file(text, self.get_full_path()),
             lambda: engine.runAndWait(),
-            lambda: engine.stop(),
-
+            lambda: engine.stop()
         ]
         
-        for step in tqdm(steps, desc='Creating Voiceover..', ncols=80):
+        for step in tqdm(steps, desc="Generating..", ncols=80):
             step()
 
         print(f"[✔] Audio saved to: {self.get_full_path()}")
