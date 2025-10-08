@@ -4,9 +4,9 @@ from ollama import ChatResponse
 
 def filter(text) -> str:
     """
-    This filters the paramenter, text, to replace profanity and 
-    to unabbreivate abbreviations. Just uses a local AI with
-    ollama and returns the new post text. 
+    This filters the paramenter: text, to replace profanity and 
+    to unabbreivate abbreviations i.e 'btw' to 'by the way'. 
+    Just uses a local AI with ollama and returns the new post text. 
     """
     response: ChatResponse = ollama.chat(
         model="llama3",

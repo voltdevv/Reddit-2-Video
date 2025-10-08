@@ -1,5 +1,6 @@
 import requests
 from fake_useragent import UserAgent
+from tqdm import tqdm
 
 
 class Post:
@@ -13,7 +14,7 @@ class Post:
         return f"""
 URL: {self.url}
 Title: {self.title}
-Text: {self.text}
+Text: {len(self.text)} characters
 \n
 """
 
@@ -27,7 +28,7 @@ def GetPosts(url, story_count=1) -> list:
 
     results = []
 
-    for story in range(story_count): # max per request 
+    for story in tqdm(range(story_count), desc="Fetching Posts", ncols=80): # max per request 
     
         post = data['data']['children'][story]['data']
         title = post['title']
