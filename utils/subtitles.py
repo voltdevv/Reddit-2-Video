@@ -11,9 +11,7 @@ class Segment:
 
     def __str__(self):
         return f"""
-Start - {self.start}
-End - {self.end}
-Text - {self.text}
+Start - {self.start}s | End - {self.end}s | Text - {self.text}
 """
 
 def segment(path):
@@ -26,5 +24,3 @@ def segment(path):
         segs.append(Segment(segment.start, segment.end, segment.text))
 
     return segs
-
-
