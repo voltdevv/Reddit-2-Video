@@ -35,6 +35,7 @@ class Voice:
             step()
 
         print(f"[✔] Audio saved to: {self.get_full_path()}")
+        return self.get_full_path()
 
     
     def __check(self):

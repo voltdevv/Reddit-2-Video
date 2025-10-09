@@ -1,5 +1,5 @@
 from moviepy import VideoFileClip, TextClip, CompositeVideoClip, AudioFileClip
-from subtitles import Segment
+from utils.subtitles import Segment
 from random import randint
 
 
