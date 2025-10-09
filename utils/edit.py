@@ -1,15 +1,17 @@
 from moviepy import VideoFileClip, TextClip, CompositeVideoClip, AudioFileClip
 from subtitles import Segment
+from random import randint
 
 
 
 class Editor():
 
-    def __init__(self, video_path, audio_path):
+    def __init__(self, video_path, audio_path, output_path = "output/result.mp4"):
 
         self.video = VideoFileClip(video_path)
         self.audio = AudioFileClip(audio_path)
         self.text_clips = []
+        self.output_path = output_path
 
     def add_subtitles(self, *segments: Segment):
 
@@ -28,14 +30,20 @@ class Editor():
 
     
     def complete(self):
-        pass
-
-
         
+        result = CompositeVideoClip([self.video, *self.text_clips])
+        result.with_audio(self.audio)
+        #cropping
+        result.write_videofile(self.output_path)
+        print(f'✔️ Completed at {self.output_path}')
 
-        
-        
 
+    def set_video_duration(self, short_length):
+        # MINUTES !
+        duration = self.video.duration / 60
+        start = randint(0, int(duration - short_length))
+        end = start + short_length
 
-    
-        
+        self.video = self.video.subclipped((start, 0),(end, 0))
+        return self.video
+
